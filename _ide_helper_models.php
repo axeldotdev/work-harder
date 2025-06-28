@@ -17,12 +17,94 @@ namespace App\Models{
  *
  * @property int $id
  * @property int $user_id
- * @property int $task_model_id
+ * @property mixed $name
+ * @property mixed $content
+ * @property \Carbon\CarbonImmutable|null $created_at
+ * @property \Carbon\CarbonImmutable|null $updated_at
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Entry newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Entry newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Entry query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Entry whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Entry whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Entry whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Entry whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Entry whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Entry whereUserId($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperEntry {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property \App\Enums\MealType $type
+ * @property string $name
+ * @property string $description
+ * @property \Carbon\CarbonImmutable|null $created_at
+ * @property \Carbon\CarbonImmutable|null $updated_at
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meal newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meal newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meal query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meal whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meal whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meal whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meal whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meal whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meal whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Meal whereUserId($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperMeal {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string $name
+ * @property string $url
+ * @property \Carbon\CarbonImmutable|null $created_at
+ * @property \Carbon\CarbonImmutable|null $updated_at
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Motivation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Motivation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Motivation query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Motivation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Motivation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Motivation whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Motivation whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Motivation whereUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Motivation whereUserId($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperMotivation {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int|null $task_model_id
  * @property \App\Enums\TaskStatus $status
  * @property \Carbon\CarbonImmutable $due_at
  * @property string|null $comment
  * @property \Carbon\CarbonImmutable|null $created_at
  * @property \Carbon\CarbonImmutable|null $updated_at
+ * @property string|null $name
+ * @property string|null $description
  * @property-read \App\Models\TaskModel|null $model
  * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task newModelQuery()
@@ -30,8 +112,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereComment($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereDueAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereTaskModelId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereUpdatedAt($value)
@@ -91,6 +175,12 @@ namespace App\Models{
  * @property string|null $remember_token
  * @property \Carbon\CarbonImmutable|null $created_at
  * @property \Carbon\CarbonImmutable|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Entry> $entries
+ * @property-read int|null $entries_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Meal> $meals
+ * @property-read int|null $meals_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Motivation> $motivations
+ * @property-read int|null $motivations_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TaskModel> $taskModels

@@ -6,6 +6,9 @@ use App\Enums\MealType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @mixin IdeHelperMeal
+ */
 class Meal extends Model
 {
     /** @return BelongsTo<User, $this> */

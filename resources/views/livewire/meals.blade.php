@@ -73,7 +73,7 @@ new class extends Component {
             'type' => ['required', Rule::enum(MealType::class)],
         ]);
 
-        if ($this->currentMeal) {
+        if ($this->currentMeal instanceof \App\Models\Meal) {
             $this->currentMeal->update($validated);
         } else {
             $this->user->meals()->create($validated);
