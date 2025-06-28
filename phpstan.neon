@@ -1,0 +1,23 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/nesbot/carbon/extension.neon
+    - vendor/phpstan/phpstan/conf/bleedingEdge.neon
+
+parameters:
+    level: 5
+
+    paths:
+        - app
+        - database
+        - resources/views
+        - routes
+
+    scanFiles:
+        - _ide_helper_models.php
+
+    ignoreErrors:
+        - '#Expression "new \#\[\\Livewire\\Attributes\\Layout\(\047components\.layouts\.auth\047\)\] class extends \\Livewire\\Volt\\Component..." on a separate line does not do anything.#'
+        - '#Expression "new class extends \\Livewire\\Volt\\Component..." on a separate line does not do anything.#'
+
+    excludePaths:
+        - ./resources/views/flux
