@@ -190,7 +190,8 @@ new class extends Component {
                 'tasks' => $this->user->tasks()
                     ->with('model')
                     ->where('due_at', $day)
-                    ->get(),
+                    ->get()
+                    ->sortBy(fn (Task $task) => $task->name ?? $task->model->name),
             ]);
         }
 
