@@ -187,7 +187,7 @@ new class extends Component {
                             </div>
                         </flux:card>
                     @empty
-                        <div class="flex justify-center p-4 bg-zinc-100 rounded-lg">
+                        <div class="flex justify-center p-4 bg-zinc-100 dark:bg-zinc-700 rounded-lg">
                             <flux:text variant="subtle">
                                 {{ __('No meal for that day') }}
                             </flux:text>
